@@ -1,15 +1,27 @@
-
 let pessoas = []
 
 let cadastrados= document.querySelector(".cadastrados")
-const addPessoas= ()=>{
+const atualizarPessoas= ()=>{
     cadastrados.innerHTML=""
-    pessoas.map(pessoa =>{
+    pessoas.map((pessoa, indice) =>{
         const div=document.createElement("div")
         div.setAttribute("class","cardpessoa")
         div.innerHTML=`<p><strong>Nome:</strong> ${pessoa.nome}</p>
-                        <p><strong>Idade:</strong> ${pessoa.idade}</p>`
+                        <p><strong>Idade:</strong> ${pessoa.idade}</p>
+                        <p><strong>Email:</strong> ${pessoa.email}</p>
+                        <p><strong>Telefone:</strong> ${pessoa.telefone}</p>`
         cadastrados.appendChild(div)
+        
+        const buttonRemover=document.createElement("button")
+        buttonRemover.setAttribute("class","buttonRemover")
+        buttonRemover.innerHTML="Remover"
+        div.appendChild(buttonRemover)
+
+        buttonRemover.addEventListener('click', ()=>{
+            pessoas.splice(indice,1)
+
+            atualizarPessoas()
+        })
     })
 }
 
@@ -17,19 +29,28 @@ document.querySelector("#adicionarPessoa").addEventListener('click', () => {
 
     const erroNome = document.getElementById("erroNome")
     const erroIdade = document.getElementById("erroIdade")
+    const erroEmail = document.getElementById("erroEmail")
+    const erroTelefone = document.getElementById("erroTelefone")
 
     erroNome.textContent = ""
     erroIdade.textContent = ""
+    erroEmail.textContent = ""
+    erroTelefone.textContent = ""
 
     let inputNome = document.getElementById("inputNome")
     let inputIdade = document.getElementById("inputIdade")
+    let inputEmail= document.getElementById("inputEmail")
+    let inputTelefone= document.getElementById("inputTelefone")
 
     inputNome.classList.remove("inputErro")
     inputIdade.classList.remove("inputErro")
+    inputEmail.classList.remove("inputErro")
+    inputTelefone.classList.remove("inputErro")
 
     let nome = inputNome.value.trim()
     let idade = inputIdade.value.trim()
-
+    let email = inputEmail.value.trim()
+    let telefone = inputTelefone.value.trim()
     if (nome === "") {
         erroNome.textContent = "Informe um nome."
         inputNome.classList.add("inputErro")
@@ -41,6 +62,20 @@ document.querySelector("#adicionarPessoa").addEventListener('click', () => {
         erroIdade.textContent = "Informe uma idade."
         inputIdade.classList.add("inputErro")
         inputIdade.focus()
+        return
+    }
+
+    if (email === "") {
+        erroEmail.textContent = "Informe um Email."
+        inputEmail.classList.add("inputErro")
+        inputEmail.focus()
+        return
+    }
+
+    if (telefone === "") {
+        erroTelefone.textContent = "Informe um Telefone."
+        inputTelefone.classList.add("inputErro")
+        inputTelefone.focus()
         return
     }
 
@@ -59,20 +94,11 @@ document.querySelector("#adicionarPessoa").addEventListener('click', () => {
     }
 
     const Pessoa = {
-        nome: "",
-        idade: "",
-
-        SetNome: function (nome) {
-            this.nome = nome
-        },
-
-        SetIdade: function (idade) {
-            this.idade = idade
-        }
+        nome: nome,
+        idade: idade,
+        email: email,
+        telefone: telefone
     }
-
-    Pessoa.SetNome(nome)
-    Pessoa.SetIdade(idade)
 
     pessoas.push(Pessoa)
 
@@ -80,9 +106,12 @@ document.querySelector("#adicionarPessoa").addEventListener('click', () => {
 
     inputNome.value = ""
     inputIdade.value = ""
+    inputEmail.value = ""
+    inputTelefone.value = ""
 
     inputNome.focus()
 
-    addPessoas()
+    atualizarPessoas()
 
 })
+
