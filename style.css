@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #E9ECF2;
+    font-family: 'Inter', sans-serif;
+}
+.container-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.card{
+    width: 720px;
+    height: 50vh;
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #fcf8f8;
+    margin: 2rem;
+    padding: 1.5rem;
+}
+
+.cardh2{
+    color: #4F46E5;
+}
+
+.form-control {
+    border: 1.5px solid #4F46E5;
+}
+
+.form-control:focus {
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+.form-label {
+    color: #334155;
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    font-size: 1.25rem;
+}
+
+.btn{
+    background-color: #4F46E5;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 10rem;
+    height: 50px;
+    transition: all 0.25s ease;
+}
+
+.btn:hover{
+    background-color: #4338CA;
+}
+
+.cadastrados{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin: 20px;
+}
+
+.cardpessoa{
+    width: 250px;
+    min-height: 120px;
+    padding: 20px;
+
+    background-color: #FCFDFE;
+    border: 1px solid #D7DFEA;
+    border-radius: 5px;
+
+    color: #334155;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+
+    transition: all .25s ease;
+}
+
+.cardpessoa:hover{
+    transform: translateY(-4px) scale(1.02);
+    border-color: #4F46E5;
+    box-shadow: 0 10px 24px rgba(79,70,229,.12);
+}
+
+.cardpessoa p{
+    margin-bottom: 12px;
+}
+
+.cardpessoa p:last-child{
+    margin-bottom: 0;
+}
+
+.cardpessoa strong{
+    color: #4F46E5;
+    font-weight: 600;
+}
+.mensagemErro{
+    display: block;
+    color: #DC2626;
+    font-size: .9rem;
+    margin-top: 4px;
+    min-height: 20px;
+}
+
+.inputErro{
+    border-color: #DC2626 !important;
+}
+
+.inputErro:focus{
+    border-color: #DC2626;
+    box-shadow: 0 0 0 .2rem rgba(220,38,38,.25);
+}
